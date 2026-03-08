@@ -572,21 +572,6 @@
   .pricing-card.featured .price-desc { color: rgba(255,255,255,0.65); }
   .pricing-card.featured .price-feature { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.12); }
 
-  .featured-badge {
-    position: absolute;
-    top: -12px; left: 50%;
-    transform: translateX(-50%);
-    background: var(--gold);
-    color: var(--navy);
-    font-size: 0.68rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 5px 14px;
-    border-radius: 100px;
-    white-space: nowrap;
-  }
-
   .price-label {
     font-family: 'Space Mono', monospace;
     font-size: 0.72rem;
@@ -741,30 +726,65 @@
     position: relative;
   }
 
-  .tg-button {
+  /* Social buttons grid */
+  .social-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 24px;
+  }
+
+  .social-btn {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
-    background: var(--navy);
-    color: white;
-    padding: 20px 44px;
-    font-size: 1rem;
+    gap: 10px;
+    padding: 14px 28px;
+    font-size: 0.9rem;
     font-weight: 600;
     text-decoration: none;
     border-radius: 2px;
     letter-spacing: 0.3px;
     transition: background 0.25s, transform 0.2s, box-shadow 0.2s;
-    position: relative;
   }
-  .tg-button:hover {
-    background: var(--red);
-    transform: translateY(-2px);
-    box-shadow: 0 16px 40px rgba(200,55,58,0.3);
+  .social-btn:hover { transform: translateY(-2px); }
+  .social-btn .s-icon { font-size: 1.15rem; }
+
+  .btn-telegram {
+    background: var(--navy);
+    color: white;
   }
-  .tg-button .tg-icon { font-size: 1.3rem; }
+  .btn-telegram:hover {
+    background: #0088cc;
+    box-shadow: 0 12px 32px rgba(0,136,204,0.3);
+  }
+  .btn-whatsapp {
+    background: #25D366;
+    color: white;
+  }
+  .btn-whatsapp:hover {
+    background: #1ebe5d;
+    box-shadow: 0 12px 32px rgba(37,211,102,0.3);
+  }
+  .btn-instagram {
+    background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+    color: white;
+  }
+  .btn-instagram:hover {
+    box-shadow: 0 12px 32px rgba(253,29,29,0.3);
+  }
+  .btn-facebook {
+    background: #1877F2;
+    color: white;
+  }
+  .btn-facebook:hover {
+    background: #1464d8;
+    box-shadow: 0 12px 32px rgba(24,119,242,0.3);
+  }
 
   .contact-handle {
-    margin-top: 20px;
+    margin-top: 4px;
     font-family: 'Space Mono', monospace;
     font-size: 0.8rem;
     color: var(--text-muted);
@@ -828,7 +848,6 @@
     .nav-links { display: none; }
     .hamburger { display: flex; }
 
-    /* Hero stacks vertically */
     .hero {
       grid-template-columns: 1fr;
       min-height: auto;
@@ -862,18 +881,15 @@
     .stat-num { font-size: 1.6rem; }
     .deco-circle { display: none; }
 
-    /* Sections */
     section { padding: 60px 20px; }
     .section-title { font-size: clamp(1.8rem, 7vw, 2.4rem); }
 
-    /* Approach */
     .approach { grid-template-columns: 1fr; gap: 40px; padding: 60px 20px; }
     .approach-text .section-body { font-size: 0.92rem; }
     .big-quote-block { padding: 36px 28px; }
     .big-quote-text { font-size: 1.25rem; }
     .floating-tag { display: none; }
 
-    /* Pricing */
     .pricing { padding: 60px 20px; }
     .pricing-cards { grid-template-columns: 1fr; gap: 20px; max-width: 100%; }
     .pricing-card { padding: 32px 24px; }
@@ -885,15 +901,14 @@
       gap: 12px;
     }
 
-    /* For whom */
     .for-whom { padding: 60px 20px; }
     .profiles-grid { grid-template-columns: 1fr; gap: 16px; }
     .profile-card { padding: 24px 20px; }
 
-    /* Contact */
     .contact { padding: 72px 20px; }
     .contact .section-title { font-size: clamp(2rem, 8vw, 3rem); }
-    .tg-button { padding: 16px 28px; font-size: 0.95rem; width: 100%; justify-content: center; }
+    .social-buttons { flex-direction: column; align-items: stretch; }
+    .social-btn { justify-content: center; padding: 14px 20px; font-size: 0.9rem; }
     .contact-sub { font-size: 0.92rem; }
 
     footer { padding: 24px 20px; flex-direction: column; gap: 10px; text-align: center; }
@@ -941,7 +956,7 @@
 
     .contact { padding: 60px 16px; }
     .contact-sub { font-size: 0.88rem; }
-    .tg-button { font-size: 0.88rem; padding: 14px 20px; }
+    .social-btn { font-size: 0.85rem; padding: 12px 16px; }
     .contact-handle { font-size: 0.72rem; }
 
     footer { padding: 20px 16px; font-size: 0.75rem; }
@@ -962,9 +977,9 @@
   <a href="#" class="nav-logo">Անի<span>.</span></a>
   <ul class="nav-links">
     <li><a href="#approach">Մոտեցում</a></li>
-    <li><a href="#pricing">Գներ</a></li>
-    <li><a href="#for-whom">Ում համար</a></li>
-    <li><a href="#contact" class="nav-cta">Գրի՛ր ինձ</a></li>
+    <li><a href="#pricing">Պայմաններ</a></li>
+    <li><a href="#for-whom">Ում համար է</a></li>
+    <li><a href="#contact" class="nav-cta">Կապ հաստատել</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -976,7 +991,7 @@
   <a href="#approach" class="mobile-link">Մոտեցում</a>
   <a href="#pricing" class="mobile-link">Գներ</a>
   <a href="#for-whom" class="mobile-link">Ում համար</a>
-  <a href="https://t.me/AniHaru21" target="_blank" class="mobile-cta">Գրի՛ր ինձ ✈️</a>
+  <a href="#contact" class="mobile-link mobile-cta">Կապ հաստատիր ✈️</a>
 </div>
 
 <!-- HERO -->
@@ -984,18 +999,18 @@
   <div class="hero-left">
     <div class="hero-badge">🇺🇸 American English · Online</div>
     <h1 class="hero-title">Խոսի՛ր<br><em>ազատ</em>,<br>ինչպես<br>լեզվակիրը</h1>
-    <p class="hero-subtitle">Անհատական մոտեցում, ճկուն գրաֆիկ, ամերիկյան անգլերեն — որ վստահ հնչես ամեն հաղորդակցության մեջ։</p>
+    <p class="hero-subtitle">Անհատական մոտեցում, ճկուն գրաֆիկ, ամերիկյան անգլերեն — որ վստահ ու անկաշկանդ խոսես։</p>
     <div class="hero-actions">
-      <a href="https://t.me/AniHaru21" target="_blank" class="btn-primary">
+      <a href="#contact" class="btn-primary">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
-        Անձնական նամակ
+        Կապ հաստատել
       </a>
-      <a href="#approach" class="btn-secondary">Ծանոթացիր →</a>
+      <a href="#approach" class="btn-secondary">Ծանոթանալ →</a>
     </div>
     <div class="hero-flags">
-      <div class="flag-chip"><span>🇦🇲</span> Հայ ուսանողների համար</div>
       <div class="flag-chip"><span>🇺🇸</span> American English</div>
       <div class="flag-chip"><span>💻</span> Online</div>
+      <div class="flag-chip"><span>🌍</span> Բոլոր մակարդակներ</div>
     </div>
   </div>
 
@@ -1009,7 +1024,7 @@
       <div class="hero-card-quote">
         <span class="quote-mark">"</span>Հոբբիդ + Անգլերեն = Հաճույք
       </div>
-      <p class="hero-card-desc">Ամեն ուսանողի հետ կազմում ենք անհատական ծրագիր՝ հիմնված Քո հետաքրքրությունների վրա, որ լեզուն իրոք սիրես։</p>
+      <p class="hero-card-desc">Ամեն ուսանողի հետ կազմում ենք անհատական ծրագիր՝ հիմնված նրա հետաքրքրությունների վրա, որ լեզու սովորելը դառնա հաճելի, ոչ թե ձանձրալի։</p>
       <div class="hero-card-stats">
         <div class="stat">
           <div class="stat-num">∞<span></span></div>
@@ -1017,7 +1032,7 @@
         </div>
         <div class="stat">
           <div class="stat-num">1<span>st</span></div>
-          <div class="stat-label">Դաս անվճար</div>
+          <div class="stat-label">Հանդիպում անվճար</div>
         </div>
         <div class="stat">
           <div class="stat-num">2<span>—3</span></div>
@@ -1035,18 +1050,17 @@
 <!-- TICKER -->
 <div class="ticker">
   <div class="ticker-inner">
-    <!-- doubled for seamless loop -->
     <div class="ticker-item"><span>Speak With Confidence</span><span class="ticker-dot"></span></div>
     <div class="ticker-item"><span>American English</span><span class="ticker-dot"></span></div>
     <div class="ticker-item"><span>Online Դասեր</span><span class="ticker-dot"></span></div>
     <div class="ticker-item"><span>Անհատական Ծրագիր</span><span class="ticker-dot"></span></div>
-    <div class="ticker-item"><span>Առաջին Դաս Անվճար</span><span class="ticker-dot"></span></div>
+    <div class="ticker-item"><span>Առաջին Հանդիպումն Անվճար</span><span class="ticker-dot"></span></div>
     <div class="ticker-item"><span>Ազատ Հաղորդակցություն</span><span class="ticker-dot"></span></div>
     <div class="ticker-item"><span>Speak With Confidence</span><span class="ticker-dot"></span></div>
     <div class="ticker-item"><span>American English</span><span class="ticker-dot"></span></div>
     <div class="ticker-item"><span>Online Դասեր</span><span class="ticker-dot"></span></div>
     <div class="ticker-item"><span>Անհատական Ծրագիր</span><span class="ticker-dot"></span></div>
-    <div class="ticker-item"><span>Առաջին Դաս Անվճար</span><span class="ticker-dot"></span></div>
+    <div class="ticker-item"><span>Առաջին Հանդիպումն Անվճար</span><span class="ticker-dot"></span></div>
     <div class="ticker-item"><span>Ազատ Հաղորդակցություն</span><span class="ticker-dot"></span></div>
   </div>
 </div>
@@ -1055,14 +1069,14 @@
 <section class="approach reveal" id="approach">
   <div class="approach-text">
     <div class="section-label">Ինչպես եմ դասավանդում</div>
-    <h2 class="section-title">Ոչ գիրք,<br><em>կենդանի</em> լեզու</h2>
-    <p class="section-body">Դասընթացի ծրագիրը կառուցվում է բացառապես Քո նպատակների ու հետաքրքրությունների հիման վրա։ Արդյունքը՝ ոչ թե գրքային, այլ կենդանի, վստահ անգլերեն, որը կաշխատի Քո կյանքի ամեն ոլորտում։</p>
+    <h2 class="section-title">Կենդանի լեզու,<br><em>կենդանի</em> խոսք</h2>
+    <p class="section-body">Դասընթացի ծրագիրը կառուցվում է բացառապես Քո նպատակների ու հետաքրքրությունների հիման վրա։ Օգտագործում ենք ճիշտ գրքեր ու նյութեր՝ Քո մակարդակին համապատասխան, արդյունքում ստանում ես կենդանի, վստահ անգլերեն։</p>
     <div class="pillars">
       <div class="pillar">
         <span class="pillar-num">01</span>
         <div class="pillar-content">
           <h4>Ծանոթություն ու վերլուծություն</h4>
-          <p>Առաջին 40 րոպե անվճար ծանոթացում — հասկանում ենք Քո ուժեղ ու թույլ կողմերը, կազմում ենք ծրագիր։</p>
+          <p>Անվճար նախնական հանդիպում — հասկանում ենք Քո ուժեղ ու թույլ կողմերը, կազմում ենք անհատական ծրագիր։</p>
         </div>
       </div>
       <div class="pillar">
@@ -1083,7 +1097,7 @@
         <span class="pillar-num">04</span>
         <div class="pillar-content">
           <h4>Ճկուն գրաֆիկ</h4>
-          <p>Ուզածդ պահին, ուզածդ տեղից — online, Zoom/Google Meet-ով, էկրան կիսելով։ Ցանկացած պահի կարող ես դադարեցնել կամ փոփոխել։</p>
+          <p>Ուզածդ պահին, ուզածդ տեղից — online, Google Meet-ով։ Ցանկացած պահի կարող ես հարմարացնել Քո ժամային գրաֆիկին կամ փոփոխել դասերի ժամանակացույցը։</p>
         </div>
       </div>
     </div>
@@ -1114,22 +1128,21 @@
       <p class="price-desc">Շաբաթական 3 օր, 1 ժամ ամեն դաս — ավելի հաճախ, ավելի արագ արդյունք</p>
       <ul class="price-features">
         <li class="price-feature"><span class="check">✓</span> Շաբաթ 3 × 1 ժամ</li>
-        <li class="price-feature"><span class="check">✓</span> Online / Zoom</li>
+        <li class="price-feature"><span class="check">✓</span> Online / Google Meet</li>
         <li class="price-feature"><span class="check">✓</span> Անհատական ծրագիր</li>
-        <li class="price-feature"><span class="check">✓</span> Ցանկացած ժամ դադարեցնելու հնարավորություն</li>
+        <li class="price-feature"><span class="check">✓</span> Ճկուն պայմաններ — դադարեցնել կամ փոփոխել ցանկացած պահի</li>
       </ul>
     </div>
 
     <div class="pricing-card featured">
-      <div class="featured-badge">⭐ Ամենատարածված</div>
       <div class="price-label">Ծրագիր Բ</div>
       <div class="price-main"><sub>֏</sub>3,000 <small>/ դաս</small></div>
       <p class="price-desc">Շաբաթական 2 օր, 1.5 ժամ — ֆինանսական ու ժամանակային առումով ավելի արդյունավետ</p>
       <ul class="price-features">
         <li class="price-feature"><span class="check">✓</span> Շաբաթ 2 × 1.5 ժամ</li>
-        <li class="price-feature"><span class="check">✓</span> Online / Zoom</li>
+        <li class="price-feature"><span class="check">✓</span> Online / Google Meet</li>
         <li class="price-feature"><span class="check">✓</span> Անհատական ծրագիր</li>
-        <li class="price-feature"><span class="check">✓</span> Ցանկացած ժամ դադարեցնելու հնարավորություն</li>
+        <li class="price-feature"><span class="check">✓</span> Ճկուն պայմաններ — դադարեցնել կամ փոփոխել ցանկացած պահի</li>
       </ul>
     </div>
   </div>
@@ -1137,8 +1150,8 @@
   <div class="free-lesson-banner">
     <div class="free-lesson-icon">🎁</div>
     <div class="free-lesson-text">
-      <h4>Առաջին դասը — ԱՆՎՃԱՐ</h4>
-      <p>40 րոպե ծանոթություն. կքննարկենք Քո մակարդակն ու նպատակները, կազմենք անհատական ծրագիր։ Ոչ մի պարտավորություն։</p>
+      <h4>Առաջին հանդիպումն — ԱՆՎՃԱՐ</h4>
+      <p>Ծանոթություն. կքննարկենք Քո մակարդակն ու նպատակները, կազմենք անհատական ծրագիր։ Դասերի մեջ չի մտնում, ոչ մի պարտավորություն։</p>
     </div>
   </div>
 </section>
@@ -1146,28 +1159,28 @@
 <!-- FOR WHOM -->
 <section class="for-whom reveal" id="for-whom">
   <div class="section-label">Ում համար</div>
-  <h2 class="section-title">Ճանաչու՞մ ես<br><em>քեզ</em> այստեղ</h2>
+  <h2 class="section-title">Գտա՞ր<br><em>քեզ</em> այստեղ</h2>
 
   <div class="profiles-grid">
     <div class="profile-card">
-      <div class="profile-icon">💻</div>
-      <h4>Ծրագրավորողներ</h4>
-      <p>Տերմինները գիտես, բայց call-երի ժամանակ դժվար ես արտահայտվում? Կսովորենք ազատ խոսել tech context-ում։</p>
+      <div class="profile-icon">💼</div>
+      <h4>Աշխատանքային ոլորտ</h4>
+      <p>Meetings, emails, presentations — կօգնեմ վստահ ու բնական հնչել English-speaking աշխատավայրում, ցանկացած ոլորտում։</p>
     </div>
     <div class="profile-card">
       <div class="profile-icon">🎯</div>
-      <h4>Intermediate դիմորդներ</h4>
+      <h4>Intermediate մակարդակ</h4>
       <p>Հասկանում ես, կարդում ես — բայց խոսելիս վստահությունը բացակայում է։ Կվերածենք գիտելիքը կենդանի, ազատ խոսքի։</p>
     </div>
     <div class="profile-card">
       <div class="profile-icon">🌍</div>
-      <h4>Արտագնա աշխատանք</h4>
-      <p>Interview-ներ, meetings, presentations — կօգնեմ վստահ ու բնական հնչել English-speaking աշխատավայրում։</p>
+      <h4>Արտագնա հնարավորություններ</h4>
+      <p>Interview-ներ, networking, միջազգային համագործակցություն — կօգնեմ բացել դռները, որ լեզուն արգելք չլինի։</p>
     </div>
     <div class="profile-card">
       <div class="profile-icon">📚</div>
       <h4>Ուսանողներ</h4>
-      <p>Academic English-ից բացի, կյանքում կիրառելի ազատ խոսելու կարողություն — ոչ միայն test-ի համար։</p>
+      <p>Կյանքում կիրառելի ազատ խոսելու կարողություն — ոչ թե քննության, այլ իրական հաղորդակցության համար։</p>
     </div>
     <div class="profile-card">
       <div class="profile-icon">🚀</div>
@@ -1186,18 +1199,29 @@
 <section class="contact reveal" id="contact">
   <div class="section-label">Սկսենք</div>
   <h2 class="section-title">Պատրա՞ստ ես<br><em>խոսել</em> ազատ</h2>
-  <p class="contact-sub">Գրիր ինձ Telegram-ով — կպայմանավորվենք Քո անվճար ծանոթության դասի ժամը։ Ոչ մի ռիսկ, ոչ մի պարտավորություն։</p>
-  <a href="https://t.me/AniHaru21" target="_blank" class="tg-button">
-    <span class="tg-icon">✈️</span>
-    Telegram-ով գրիր ինձ
-  </a>
+  <p class="contact-sub">Գրիր ինձ ցանկացած հարմար հարթակով — կպայմանավորվենք Քո առաջին անվճար հանդիպման ժամը։ Ոչ մի ռիսկ, ոչ մի պարտավորություն։</p>
+
+  <div class="social-buttons">
+    <a href="https://t.me/AniHaru21" target="_blank" class="social-btn btn-telegram">
+      <span class="s-icon">✈️</span> Telegram
+    </a>
+    <a href="https://wa.me/37496401224" target="_blank" class="social-btn btn-whatsapp">
+      <span class="s-icon">💬</span> WhatsApp
+    </a>
+    <a href="https://www.instagram.com/haru_ani20?igsh=MWl6ZnJ4NTFsanI3bg==" target="_blank" class="social-btn btn-instagram">
+      <span class="s-icon">📷</span> Instagram
+    </a>
+    <a href="https://www.facebook.com/share/17xQ1iLsdf/" target="_blank" class="social-btn btn-facebook">
+      <span class="s-icon">👤</span> Facebook
+    </a>
+  </div>
   <div class="contact-handle">@AniHaru21</div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Անի<span>.</span></div>
-  <div>American English Tutor · Online · 🇦🇲</div>
+  <div>American English Tutor · Online · 🌍</div>
   <div>@AniHaru21</div>
 </footer>
 
